@@ -638,8 +638,10 @@ void updateLoop(SDL_Window* window, SDL_Surface *draw_surface)
                         char filename[1024];
                         FILE *fptr;
                         
-                        sprintf(filename, "/tmp/Mandelbrot_%08g_%08g_%08g.tga", views[zoom_index].center_x,
-                                views[zoom_index].center_y, views[zoom_index].zoom);
+                        sprintf(filename, "/tmp/Mandelbrot_%s%1.16g_%s%01.16g_%s%1.16g.tga",
+                                (views[zoom_index].center_x < 0.0 ? "neg_" : ""), fabs(views[zoom_index].center_x),
+                                (views[zoom_index].center_y < 0.0 ? "neg_" : ""), fabs(views[zoom_index].center_y),
+                                (views[zoom_index].zoom < 0.0 ? "neg_" : ""), fabs(views[zoom_index].zoom));
                         
                         printf("Saving to file %s\n", filename);
                         

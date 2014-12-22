@@ -1,0 +1,270 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF2C2FCD1A47AB5B00DC7684 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2C2FCC1A47AB5B00DC7684 /* main.cpp */; };
+		BF2C2FD41A47AB8C00DC7684 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2C2FD31A47AB8C00DC7684 /* OpenCL.framework */; };
+		BF2C2FD61A47AB9E00DC7684 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2C2FD51A47AB9E00DC7684 /* SDL2.framework */; };
+		BFEBF7011A47B2CA0030A238 /* libgmp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEBF7001A47B2CA0030A238 /* libgmp.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF2C2FC71A47AB5B00DC7684 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BF2C2FC91A47AB5B00DC7684 /* mandelbrot-explorer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "mandelbrot-explorer"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF2C2FCC1A47AB5B00DC7684 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		BF2C2FD31A47AB8C00DC7684 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+		BF2C2FD51A47AB9E00DC7684 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		BFEBF7001A47B2CA0030A238 /* libgmp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgmp.a; path = "mandelbrot-explorer/libgmp.a"; sourceTree = "<group>"; };
+		BFEBF7021A47B3250030A238 /* gmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gmp.h; path = "mandelbrot-explorer/gmp-6.0.0/gmp.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF2C2FC61A47AB5B00DC7684 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFEBF7011A47B2CA0030A238 /* libgmp.a in Frameworks */,
+				BF2C2FD61A47AB9E00DC7684 /* SDL2.framework in Frameworks */,
+				BF2C2FD41A47AB8C00DC7684 /* OpenCL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF2C2FC01A47AB5B00DC7684 = {
+			isa = PBXGroup;
+			children = (
+				BFEBF7021A47B3250030A238 /* gmp.h */,
+				BFEBF7001A47B2CA0030A238 /* libgmp.a */,
+				BF2C2FD51A47AB9E00DC7684 /* SDL2.framework */,
+				BF2C2FD31A47AB8C00DC7684 /* OpenCL.framework */,
+				BF2C2FCB1A47AB5B00DC7684 /* mandelbrot-explorer */,
+				BF2C2FCA1A47AB5B00DC7684 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BF2C2FCA1A47AB5B00DC7684 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF2C2FC91A47AB5B00DC7684 /* mandelbrot-explorer */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF2C2FCB1A47AB5B00DC7684 /* mandelbrot-explorer */ = {
+			isa = PBXGroup;
+			children = (
+				BF2C2FCC1A47AB5B00DC7684 /* main.cpp */,
+			);
+			path = "mandelbrot-explorer";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BF2C2FC81A47AB5B00DC7684 /* mandelbrot-explorer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF2C2FD01A47AB5B00DC7684 /* Build configuration list for PBXNativeTarget "mandelbrot-explorer" */;
+			buildPhases = (
+				BF2C2FC51A47AB5B00DC7684 /* Sources */,
+				BF2C2FC61A47AB5B00DC7684 /* Frameworks */,
+				BF2C2FC71A47AB5B00DC7684 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mandelbrot-explorer";
+			productName = "mandelbrot-explorer";
+			productReference = BF2C2FC91A47AB5B00DC7684 /* mandelbrot-explorer */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF2C2FC11A47AB5B00DC7684 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Sandstorm Software";
+				TargetAttributes = {
+					BF2C2FC81A47AB5B00DC7684 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = BF2C2FC41A47AB5B00DC7684 /* Build configuration list for PBXProject "mandelbrot-explorer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BF2C2FC01A47AB5B00DC7684;
+			productRefGroup = BF2C2FCA1A47AB5B00DC7684 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF2C2FC81A47AB5B00DC7684 /* mandelbrot-explorer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF2C2FC51A47AB5B00DC7684 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF2C2FCD1A47AB5B00DC7684 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BF2C2FCE1A47AB5B00DC7684 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BF2C2FCF1A47AB5B00DC7684 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BF2C2FD11A47AB5B00DC7684 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/mandelbrot-explorer",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BF2C2FD21A47AB5B00DC7684 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/mandelbrot-explorer",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF2C2FC41A47AB5B00DC7684 /* Build configuration list for PBXProject "mandelbrot-explorer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF2C2FCE1A47AB5B00DC7684 /* Debug */,
+				BF2C2FCF1A47AB5B00DC7684 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF2C2FD01A47AB5B00DC7684 /* Build configuration list for PBXNativeTarget "mandelbrot-explorer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF2C2FD11A47AB5B00DC7684 /* Debug */,
+				BF2C2FD21A47AB5B00DC7684 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BF2C2FC11A47AB5B00DC7684 /* Project object */;
+}

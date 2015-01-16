@@ -59,7 +59,7 @@ struct {
 typedef struct ZoomView_t {
     struct ZoomView_t   *next;
     double              center_x, center_y, zoom;
-    unsigned            color_gradient;
+    unsigned            use_histogram;
     unsigned            itermax;
     unsigned            flags;
     unsigned            xres, yres;
@@ -427,7 +427,7 @@ RGB_Color genColorFromPalette(unsigned index, unsigned max, Palette *palette)
     }
     
     // deferred creation of palette if count is larger
-    if(max > palette->count)
+    if(max >= palette->count)
     {
         free(palette->c);
         
@@ -508,23 +508,70 @@ int createPalettes(Palette *palettes)
 void drawFractalImage(SDL_Window* window, SDL_Surface *draw_surface, ZoomView *current_view, Palette *current_palette)
 {
     SDL_Surface *screen_surface;
+    unsigned    *histogram = NULL;
+    unsigned    histogram_max = 0;
+    
+    if(current_view->use_histogram)
+    {
+        unsigned    *src_pixels = current_view->pixels;
+        size_t      len = current_view->xres * current_view->yres;
+        
+        histogram = new unsigned [len];
+        
+        for(int i=0; i<len; i++)
+        {
+            histogram[i] = 0;
+        }
+
+        for(int i=0; i<len; i++)
+        {
+            unsigned index = src_pixels[i];
+            
+            histogram[index]++;
+        }
+
+        for(int i=0; i<len; i++)
+        {
+            if(histogram[i] > histogram_max)
+                histogram_max = histogram[i];
+        }
+    }
     
     SDL_LockSurface(draw_surface);
     
     for (int hy=0; hy<current_view->yres; hy++)
     {
         unsigned *dst_pixels = (unsigned *)draw_surface->pixels + (draw_surface->pitch >> 2) * hy;
-        unsigned *src_pixels = &current_view->pixels[hy * current_view->xres];
         
-        for (int hx=0; hx<current_view->xres; hx++)
+        if(histogram)
         {
-            RGB_Color rgb = genColorFromPalette(src_pixels[hx], current_view->itermax, current_palette);
+            unsigned *src_pixels = &histogram[hy * current_view->xres];
             
-            dst_pixels[hx] = SDL_MapRGBA(draw_surface->format,
-                                         rgb.r,
-                                         rgb.g,
-                                         rgb.b,
-                                         0);
+            for (int hx=0; hx<current_view->xres; hx++)
+            {
+                RGB_Color rgb = genColorFromPalette(src_pixels[hx], histogram_max, current_palette);
+                
+                dst_pixels[hx] = SDL_MapRGBA(draw_surface->format,
+                                             rgb.r,
+                                             rgb.g,
+                                             rgb.b,
+                                             0);
+            }
+        }
+        else
+        {
+            unsigned *src_pixels = &current_view->pixels[hy * current_view->xres];
+
+            for (int hx=0; hx<current_view->xres; hx++)
+            {
+                RGB_Color rgb = genColorFromPalette(src_pixels[hx], current_view->itermax, current_palette);
+                
+                dst_pixels[hx] = SDL_MapRGBA(draw_surface->format,
+                                             rgb.r,
+                                             rgb.g,
+                                             rgb.b,
+                                             0);
+            }
         }
     }
     
@@ -855,7 +902,6 @@ void updateLoop(SDL_Window* window, SDL_Surface *draw_surface)
     views[zoom_index].center_y          = 0.0;
     views[zoom_index].zoom              = 1.0;
     views[zoom_index].pixels            = new unsigned [SCREEN_WIDTH * SCREEN_HEIGHT];
-    views[zoom_index].color_gradient    = 4;
     views[zoom_index].itermax           = 256;
     
     scanline_info = new ScanLineInfo [SCREEN_HEIGHT];
@@ -1023,17 +1069,9 @@ void updateLoop(SDL_Window* window, SDL_Surface *draw_surface)
                         
                         update = true;
                     }
-                    else if(event.key.keysym.scancode == SDL_SCANCODE_G)
-                    {
-                        if(views[zoom_index].color_gradient < 8)
-                            views[zoom_index].color_gradient++;
-                        
-                        redraw = true;
-                    }
                     else if(event.key.keysym.scancode == SDL_SCANCODE_H)
                     {
-                        if(views[zoom_index].color_gradient > 2)
-                            views[zoom_index].color_gradient--;
+                        views[zoom_index].use_histogram = !views[zoom_index].use_histogram;
                         
                         redraw = true;
                     }
@@ -1112,12 +1150,11 @@ void updateLoop(SDL_Window* window, SDL_Surface *draw_surface)
                                     }
                                     else
                                     {
-                                        unsigned mask = (0xff << (8 - views[zoom_index].color_gradient)) & 0xff;
-                                        unsigned color = src_pixels[hx] & mask;
+                                        RGB_Color rgb = genColorFromPalette(src_pixels[hx], views[zoom_index].itermax, &palettes[palette_index]);
                                         
-                                        putc((int)(color),fptr);
-                                        putc((int)(color),fptr);
-                                        putc((int)(color),fptr);
+                                        putc((int)(rgb.r),fptr);
+                                        putc((int)(rgb.g),fptr);
+                                        putc((int)(rgb.b),fptr);
                                     }
                                 }
                             }
